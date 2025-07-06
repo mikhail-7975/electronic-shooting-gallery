@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронный тир</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Электронный тир</h1>
+
+        <!-- Изображение мишени -->
+        <div class="target-container">
+            <img src="https://via.placeholder.com/300x300?text=Мишень" alt="Мишень" class="target-image" id="targetImage">
+            <canvas id="targetCanvas" class="target-canvas"></canvas>
+        </div>
+
+        <!-- Прокручиваемая область с упражнениями -->
+        <div class="exercises-scroll" id="exercisesScroll">
+            <div class="exercises-list" id="exercisesList">
+                <p class="no-exercises">Нет упражнений</p>
+            </div>
+            <div class="exercise-buttons">
+                <button class="btn" id="addExerciseBtn">Добавить упражнение</button>
+                <button class="btn btn-complete" id="completeExerciseBtn" disabled>Завершить упражнение</button>
+            </div>
+        </div>
+
+        <!-- Кнопка очистки -->
+        <div class="buttons-container">
+            <button class="btn btn-clear" id="clearExercisesBtn">Очистить все упражнения</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно для добавления упражнения -->
+    <div class="modal" id="addExerciseModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Добавить упражнение</h2>
+            <div class="form-group">
+                <label for="exerciseName">Название:</label>
+                <input type="text" id="exerciseName" placeholder="Введите название">
+            </div>
+            <div class="form-group">
+                <label for="exerciseComment">Комментарий:</label>
+                <textarea id="exerciseComment" placeholder="Введите комментарий"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exerciseColor">Цвет попаданий:</label>
+                <select id="exerciseColor">
+                    <option value="red">Красный</option>
+                    <option value="blue">Синий</option>
+                    <option value="green">Зеленый</option>
+                    <option value="yellow">Желтый</option>
+                    <option value="purple">Фиолетовый</option>
+                </select>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-cancel" id="cancelAddExercise">Отмена</button>
+                <button class="btn" id="confirmAddExercise">ОК</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
